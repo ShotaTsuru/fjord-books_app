@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_book, only: %i[show edit update destroy]
 
   # GET /books
@@ -70,6 +71,6 @@ class BooksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def book_params
-    params.require(:book).permit(:title, :memo, :author, :picture)
+    params.require(:book).permit(:title, :memo, :author, :picture).merge(user_id: current_user.id)
   end
 end

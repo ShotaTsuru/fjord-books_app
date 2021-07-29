@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .user_status {
+   display: flex;
+   justify-content: flex-end;
+ }
+
+ .status_box {
+   margin: 0 10px;
+ }

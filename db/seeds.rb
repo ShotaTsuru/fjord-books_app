@@ -26,11 +26,13 @@ Book.create!(
   picture: picture_file('cherry-book.jpg')
 )
 
-Book.create!(
-  title: '楽々ERDレッスン',
-  memo: '実在する帳票から本当に使えるテーブル設計を導く画期的な本！',
-  author: '羽生 章洋',
-  picture: picture_file('erd.jpg')
-)
+50.times do |_i|
+  Book.create!(
+    title: '楽々ERDレッスン',
+    memo: '実在する帳票から本当に使えるテーブル設計を導く画期的な本！',
+    author: '羽生 章洋',
+    picture: picture_file('erd.jpg')
+  )
+end
 
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output

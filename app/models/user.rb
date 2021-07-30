@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  paginates_per 5
+  max_paginates_per 100
+         
   has_many :books
   
 end

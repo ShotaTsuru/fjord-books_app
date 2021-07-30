@@ -10,7 +10,7 @@
       <div class="profile" id="user_addrress"><%= @user.address %></div>
     </div>
     <div class="label_box">
-      <div class="profile label" id="user_email_label">email</div>
+      <div class="profile label" id="user_email_label">Eメール</div>
       <div class="profile" id="user_email"><%= @user.email %></div>
     </div>
     <div class="label_box">
@@ -48,5 +48,6 @@
   </tbody>
 </table>
 
+<%= paginate @books %>
 
-<%= link_to "top page", root_path %>
+<%= link_to "トップページ", root_path %>

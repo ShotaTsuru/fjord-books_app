@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <% if user_signed_in?%>
     <div class="user_status">
       <div class="status_box">
         こんにちは <%= current_user.user_name %>さん
@@ -21,10 +22,10 @@
         <%= link_to "ユーザー情報の編集", edit_user_registration_path, method: :get %>
       </div>
       <div class="status_box">
-        <%= link_to "ユーザー一覧", user_index_path, method: :get %>
+        <%= link_to "ユーザー一覧", users_path, method: :get %>
       </div>
     </div>
-
+    <% end %>
     <%= yield %>
   </body>
 </html>

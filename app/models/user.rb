@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -6,7 +8,6 @@ class User < ApplicationRecord
 
   paginates_per 5
   max_paginates_per 100
-         
-  has_many :books
-  
+
+  has_many :books, dependent: :destroy
 end

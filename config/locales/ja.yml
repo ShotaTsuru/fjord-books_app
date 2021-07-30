@@ -216,11 +216,11 @@ ja:
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
     pagination:
-      first: "&laquo; 最初へ"
-      last: "最後へ &raquo;"
-      previous: "&lsaquo; 前へ"
-      next: " &rsaquo;"
-      truncate: "&hellip;"
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'
   controllers:
     common:
       notice_create: "%{name}が作成されました。"

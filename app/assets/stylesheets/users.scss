@@ -1,6 +1,9 @@
 // Place all the styles related to the user controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+td {
+  padding: 7px;
+}
 
 .user_card {
   background-color: whitesmoke;
@@ -19,4 +22,9 @@
 
 .label {
   border-top: solid 1px #f2f2f2;
+}
+
+.icon_image {
+  display: flex;
+  align-items: center;
 }

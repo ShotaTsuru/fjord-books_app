@@ -17,7 +17,7 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> 文字まで</em>
+      <em><%= @minimum_password_length %> 文字以上</em>
     <% end %>
   </div>
 
@@ -50,6 +50,14 @@
     <%= f.label :introduction %><br />
     <%= f.text_area :introduction, autocomplete: "自己紹介" %>
   </div>
+
+  <div class="field">
+    <%= f.label :icon %>
+    <%= f.file_field :icon %>
+  </div>
+
+  <div>現在のアイコン</div>
+  <div id="icon"><%= image_tag @user.icon.variant(resize: "121x121") if @user.icon.attached? %></div>
 
   <div class="actions">
     <%= f.submit "更新" %>

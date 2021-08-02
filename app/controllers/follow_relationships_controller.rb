@@ -5,7 +5,6 @@ class FollowRelationshipsController < ApplicationController
     follow = current_user.active_follow.build(follower_id: params[:user_id])
     follow.save
     redirect_to user_path(params[:user_id])
-    binding.irb
   end
 
   def destroy

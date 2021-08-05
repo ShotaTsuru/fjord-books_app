@@ -1,25 +1,25 @@
-<h1><%= @user.user_name %> My Page</h1>
+<h1><%= t("views.common.title_user_show", name: @user.user_name) %></h1>
 <div class="user_card">
   <div class="user_card_profile_box">
     <div class="label_box">
-      <div class="profile label" id="user_name_label">名前</div>
+      <div class="profile label" id="user_name_label"><%= User.human_attribute_name(:user_name) %></div>
       <div class="profile" id="user_name"><%= @user.user_name %></div>
     </div>
     <div class="label_box">
-      <div class="profile label" id="user_addrress_label">住所</div>
+      <div class="profile label" id="user_addrress_label"><%= User.human_attribute_name(:address) %></div>
       <div class="profile" id="user_addrress"><%= @user.address %></div>
     </div>
     <div class="label_box">
-      <div class="profile label" id="user_email_label">Eメール</div>
+      <div class="profile label" id="user_email_label"><%= User.human_attribute_name(:email) %></div>
       <div class="profile" id="user_email"><%= @user.email %></div>
     </div>
     <div class="label_box">
-      <div class="profile label" id="user_introduction_label">自己紹介</div>
+      <div class="profile label" id="user_introduction_label"><%= User.human_attribute_name(:introduction) %></div>
       <div class="profile" id="user_introduction"><%= @user.introduction %></div>
     </div>
   </div>
 </div>
-<h2>投稿済みの本</h2>
+<h2><%= t("views.common.already_posts", name: Book.model_name.human)%></h2>
 <table>
   <thead>
     <tr>
@@ -50,4 +50,4 @@
 
 <%= paginate @books %>
 
-<%= link_to "トップページ", root_path %>
+<%= link_to t("views.common.top_page"), root_path %>

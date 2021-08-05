@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_091644) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "author"
     t.string "picture"
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 

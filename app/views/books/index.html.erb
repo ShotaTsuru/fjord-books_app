@@ -2,7 +2,6 @@
 
 <h1><%= Book.model_name.human %></h1>
 
-
 <table>
   <thead>
     <tr>
@@ -22,10 +21,8 @@
         <td><%= book.author %></td>
         <td><%= book.picture %></td>
         <td><%= link_to t('views.common.show'), book %></td>
-        <% if current_user.id == book.user.id %>
-          <td><%= link_to t('views.common.edit'), edit_book_path(book) %></td>
-          <td><%= link_to t('views.common.destroy'), book, method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
-        <% end %>
+        <td><%= link_to t('views.common.edit'), edit_book_path(book) %></td>
+        <td><%= link_to t('views.common.destroy'), book, method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
       </tr>
     <% end %>
   </tbody>

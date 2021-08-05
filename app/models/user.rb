@@ -10,4 +10,6 @@ class User < ApplicationRecord
   max_paginates_per 100
 
   has_many :books, dependent: :destroy
+
+  validates :user_name, presence: true
 end

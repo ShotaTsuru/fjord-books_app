@@ -1,0 +1,35 @@
+<h2><%= Comment.model_name.human%></h2>
+<%= form_with model: @comment, url: polymorphic_url([@article, @comment]), local: true do |f| %>
+  <%= f.text_area :text %>
+  <div class="actions">
+    <%= f.submit t("views.common.post_comment")%>
+  </div>
+<% end %>
+
+<div class="comment_box">
+  <% if @comments.present? %>
+    <% @comments.each do |comment| %>
+      <div class="comment_content">
+        <div class="comment_status_header">
+          <div class="comment_header">
+            <div class="comment_author">
+              <%= comment.user.name %>
+            </div>
+            <div class="comment_date_time">
+              <%= comment.created_at%>
+            </div>
+          </div>
+          <div class="comment_status_box">
+            <%= link_to 'edit', polymorphic_url([:edit, @article, comment]) %>
+            <%= link_to 'destory', polymorphic_url([@article, comment]), method: :delete %>
+          </div>
+        </div>
+        <div class="comment">
+          <%= comment.text %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div>コメントの投稿はありません</div>
+  <% end %>
+</div>

@@ -13,6 +13,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @comment = Comment.new
+    @article = @book
     @comments = @book.comments
   end
 

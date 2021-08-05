@@ -20,31 +20,7 @@
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
 
-<h2><%= Comment.model_name.human%></h2>
-<%= form_with model: [@book, @comment], local: true do |f| %>
-  <%= f.text_area :text %>
-  <div class="actions">
-    <%= f.submit t("views.common.post_comment")%>
-  </div>
-<% end %>
-
-<div class="comment_box">
-  <% @comments.each do |comment| %>
-    <div class="comment_header">
-      <div class="comment_author">
-        <%= comment.user.name %>
-      </div>
-      <div class="comment_date_time">
-        <%= comment.created_at%>
-      </div>
-    </div>
-    <div class="comment">
-      <%= comment.text %>
-    </div>
-  <% end %>
-</div>
-
-
+<%= render 'comments/new', locals: {article: @article, comment: @comment, comments: @comments} %>
 
 <%= link_to t('views.common.edit'), edit_book_path(@book) %> |
 <%= link_to t('views.common.back'), books_path %>

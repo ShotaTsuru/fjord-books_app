@@ -18,5 +18,9 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
+      report:
+        title: タイトル
+        text: テキスト
+        created_at: 投稿日
       comment:
         text: コメント

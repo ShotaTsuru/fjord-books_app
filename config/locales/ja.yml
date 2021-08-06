@@ -219,6 +219,7 @@ ja:
       sign_out: ログアウト
       minimum_length: "%{length}文字以上"
       post_comment: コメントする
+      none_post: "%{name}の投稿はありません"
     pagination:
       first: '最初'
       last: '最後'

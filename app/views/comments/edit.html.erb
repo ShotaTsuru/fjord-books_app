@@ -1,7 +1,7 @@
-<h2><%= Comment.model_name.human%>の編集</h2>
+<h2><%= t("views.common.title_edit", name: Comment.model_name.human) %></h2>
 <%= form_with model: @comment, url: polymorphic_url([@article, @comment]), method: :patch, local: true do |f| %>
   <%= f.text_area :text %>
   <div class="actions">
-    <%= f.submit "更新する" %>
+    <%= f.submit t("helpers.submit.update") %>
   </div>
 <% end %>

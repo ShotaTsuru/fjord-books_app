@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
       @comments = @book.comments
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to book_path(@book), notice: "Comment was successfully created." }
+          format.html { redirect_to book_path(@book), notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
           format.json { render :show, status: :created, location: @book }
         else
           format.html { render 'books/show', status: :unprocessable_entity }
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
       @comments = @report.comments
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to report_path(@report), notice: "Comment was successfully created." }
+          format.html { redirect_to report_path(@report), notice: t('controllers.common.notice_create', name: Comment.model_name.human)  }
           format.json { render :show, status: :created, location: @report }
         else
           format.html { render 'reports/show', status: :unprocessable_entity }

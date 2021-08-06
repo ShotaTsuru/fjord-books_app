@@ -1,19 +1,19 @@
 <p>
-  <strong>Title:</strong>
-  <%= @report.title %>
+  <h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
+  <strong><%= @report.title %></strong>
 </p>
 
 <p>
-  <strong>Text:</strong>
+  <strong><%= Report.human_attribute_name(:text) %>:</strong>
   <%= @report.text %>
 </p>
 
 <p>
-  <strong>Created_at:</strong>
+  <strong><%= Report.human_attribute_name(:created_at) %>:</strong>
   <%= @report.created_at %>
 </p>
 
 <%= render 'comments/new', locals: {article: @article, comment: @comment, comments: @comments} %>
 
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+<%= link_to t('views.common.edit'), edit_report_path(@report) %> |
+<%= link_to t('views.common.back'), reports_path %>

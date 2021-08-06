@@ -12,6 +12,7 @@ class User < ApplicationRecord
   private
 
   def icon_cannot_be_used
-    errors.add(:icon, t('models.common.notice_cannot_create') unless ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'].include?(icon.blob.content_type)
+    correct_file = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
+    errors.add(:icon, t('models.common.notice_cannot_create') unless correct_file.include?(icon.blob.content_type) # rubocop:disable all
   end
 end

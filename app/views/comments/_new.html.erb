@@ -20,8 +20,8 @@
             </div>
           </div>
           <div class="comment_status_box">
-            <%= link_to 'edit', polymorphic_url([:edit, @article, comment]) %>
-            <%= link_to 'destory', polymorphic_url([@article, comment]), method: :delete %>
+            <%= link_to t('views.common.edit'), polymorphic_url([:edit, @article, comment]) %>
+            <%= link_to t('views.common.destroy'), polymorphic_url([@article, comment]), method: :delete %>
           </div>
         </div>
         <div class="comment">

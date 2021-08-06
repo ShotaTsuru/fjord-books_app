@@ -229,6 +229,9 @@ ja:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+  models:
+    common:
+      notice_cannot_create: "に指定の画像は保存できません"
   layouts:
     application:
       menu: メニュー

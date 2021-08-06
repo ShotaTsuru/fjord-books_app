@@ -1,7 +1,7 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
 
 <p>
-  <strong>アイコン:</strong>
+  <strong><%= User.human_attribute_name(:icon) %></strong>
   <%= image_tag @user.icon.variant(resize: "121x121") if @user.icon.attached? %>
 </p>
 

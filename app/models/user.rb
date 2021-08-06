@@ -12,6 +12,6 @@ class User < ApplicationRecord
   private
 
   def icon_cannot_be_used
-    errors.add(:icon, 'に指定の画像は保存できません') unless ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'].include?(icon.blob.content_type)
+    errors.add(:icon, t('models.common.notice_cannot_create') unless ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'].include?(icon.blob.content_type)
   end
 end

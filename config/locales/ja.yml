@@ -215,6 +215,12 @@ ja:
       delete_confirm: よろしいですか？
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
+      title_user_show: "%{name}さんの詳細"
+      user_list: ユーザーリスト
+      log_out: ログアウト
+      hello: "こんにちは%{name}さん"
+      top_page: トップページ
+      already_posts: "投稿済みの%{name}"
     pagination:
       first: '最初'
       last: '最後'

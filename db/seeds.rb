@@ -16,22 +16,27 @@ Book.create!(
   title: 'Ruby超入門',
   memo: 'Rubyの文法の基本をやさしくていねいに解説しています。',
   author: '五十嵐 邦明',
-  picture: picture_file('cho-nyumon.jpg')
+  picture: picture_file('cho-nyumon.jpg'),
+  user_id: 1
 )
 
 Book.create!(
   title: 'チェリー本',
   memo: 'プログラミング経験者のためのRuby入門書です。',
   author: '伊藤 淳一',
-  picture: picture_file('cherry-book.jpg')
+  picture: picture_file('cherry-book.jpg'),
+  user_id: 1
 )
 
-Book.create!(
-  title: '楽々ERDレッスン',
-  memo: '実在する帳票から本当に使えるテーブル設計を導く画期的な本！',
-  author: '羽生 章洋',
-  picture: picture_file('erd.jpg')
-)
+50.times do |_i|
+  Book.create!(
+    title: '楽々ERDレッスン',
+    memo: '実在する帳票から本当に使えるテーブル設計を導く画期的な本！',
+    author: '羽生 章洋',
+    picture: picture_file('erd.jpg'),
+    user_id: 1
+  )
+end
 
 50.times do
   Book.create!(

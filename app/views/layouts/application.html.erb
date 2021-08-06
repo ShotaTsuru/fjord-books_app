@@ -10,6 +10,22 @@
   </head>
 
   <body>
+    <% if user_signed_in?%>
+    <div class="user_status">
+      <div class="status_box">
+        <%= t("views.common.hello", name: current_user.user_name) %>
+      </div>
+      <div class="status_box">
+        <%= link_to t("views.common.log_out"), destroy_user_session_path, method: :delete %>
+      </div>
+      <div class="status_box">
+        <%= link_to t("views.common.title_edit", name: User.model_name.human), edit_user_registration_path, method: :get %>
+      </div>
+      <div class="status_box">
+        <%= link_to t("views.common.user_list"), users_path, method: :get %>
+      </div>
+    </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

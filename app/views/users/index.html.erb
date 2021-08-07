@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @users.with_attached_icon.each do |user| %>
       <tr>
         <td class="icon_image"><%= image_tag user.icon.variant(resize: "50x50") if user.icon.attached? %></td>
         <td><%= user.email %></td>

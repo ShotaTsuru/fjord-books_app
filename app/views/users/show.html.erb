@@ -1,7 +1,7 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
 
 <% unless current_user == @user %>
-  <% if current_user.active_follow.find_by(follower_id: params[:id]).nil? %>
+  <% if current_user.active_follow.find_by(follower: @user).nil? %>
     <%= link_to "フォローする", user_follow_relationships_path(@user), method: :post %>
   <% else %>
     <%= link_to "フォローを外す", user_follow_relationship_path(@user), method: :delete %>

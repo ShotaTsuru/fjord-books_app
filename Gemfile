@@ -64,4 +64,6 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'kaminari'
 
+gem 'factory_bot'
+gem 'factory_bot_rails'
 gem 'image_processing', '~> 1.2'

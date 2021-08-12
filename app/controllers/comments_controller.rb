@@ -6,27 +6,9 @@ class CommentsController < ApplicationController
 
   def create
     if params[:book_id]
-      @book = Book.find(params[:book_id])
-      @comment = @book.comments.build(comment_params)
-      @comment.user = current_user
-      @comments = @book.comments.order(:id)
-      @article = @comment.commentable
-      if @comment.save
-        redirect_to book_path(@book), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
-      else
-        render 'books/show', status: :unprocessable_entity
-      end
+      book_comment_create
     elsif params[:report_id]
-      @report = Report.find(params[:report_id])
-      @comment = @report.comments.build(comment_params)
-      @comment.user = current_user
-      @comments = @report.comments.order(:id)
-      @article = @comment.commentable
-      if @comment.save
-        redirect_to report_path(@report), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
-      else
-        render 'reports/show', status: :unprocessable_entity
-      end
+      report_comment_create
     end
   end
 
@@ -62,5 +44,31 @@ class CommentsController < ApplicationController
 
   def user_only_contributor
     redirect_to polymorphic_path(@comment.commentable) unless @comment.user == current_user
+  end
+
+  def book_comment_create
+    @book = Book.find(params[:book_id])
+    @comment = @book.comments.build(comment_params)
+    @comment.user = current_user
+    @comments = @book.comments.order(:id)
+    @article = @comment.commentable
+    if @comment.save
+      redirect_to book_path(@book), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    else
+      render 'books/show', status: :unprocessable_entity
+    end
+  end
+
+  def report_comment_create
+    @report = Report.find(params[:report_id])
+    @comment = @report.comments.build(comment_params)
+    @comment.user = current_user
+    @comments = @report.comments.order(:id)
+    @article = @comment.commentable
+    if @comment.save
+      redirect_to report_path(@report), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    else
+      render 'reports/show', status: :unprocessable_entity
+    end
   end
 end

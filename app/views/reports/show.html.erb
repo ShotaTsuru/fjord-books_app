@@ -13,7 +13,9 @@
   <%= @report.created_at %>
 </p>
 
-<%= render 'comments/new', locals: {article: @article, comment: @comment, comments: @comments} %>
+<%= render 'comments/new', {article: @article, comment: @comment, comments: @comments} %>
 
-<%= link_to t('views.common.edit'), edit_report_path(@report) %> |
+<% if @report.user == current_user %>
+  <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
+<% end %>
 <%= link_to t('views.common.back'), reports_path %>

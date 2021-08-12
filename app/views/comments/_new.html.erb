@@ -1,8 +1,22 @@
 <h2><%= Comment.model_name.human %></h2>
-<%= form_with model: @comment, url: polymorphic_url([@article, @comment]), local: true do |f| %>
+
+<%= form_with model: [@article, @comment], local: true do |f| %>
+  
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this commnet from being saved:</h2>
+
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= f.text_area :text %>
   <div class="actions">
-    <%= f.submit t("views.common.post_comment")%>
+    <%= f.submit t("views.common.post_comment") %>
   </div>
 <% end %>
 
@@ -16,13 +30,15 @@
               <%= comment.user.name %>
             </div>
             <div class="comment_date_time">
-              <%= comment.created_at%>
+              <%= comment.created_at %>
             </div>
           </div>
-          <div class="comment_status_box">
-            <%= link_to t('views.common.edit'), polymorphic_url([:edit, @article, comment]) %>
-            <%= link_to t('views.common.destroy'), polymorphic_url([@article, comment]), method: :delete %>
-          </div>
+          <% if comment.user == current_user %>
+            <div class="comment_status_box">
+              <%= link_to t('views.common.edit'), polymorphic_url([:edit, @article, comment]) %>
+              <%= link_to t('views.common.destroy'), polymorphic_url([@article, comment]), method: :delete %>
+            </div>
+          <% end %>
         </div>
         <div class="comment">
           <%= comment.text %>

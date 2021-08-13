@@ -10,8 +10,7 @@ class BooksController < ApplicationController
 
   # GET /books/1
   def show
-    @comment = Comment.new
-    @article = @book
+    @comment = @book.comments.new
     @comments = @book.comments.order(:id)
   end
 

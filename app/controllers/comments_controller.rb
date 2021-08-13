@@ -6,15 +6,13 @@ class CommentsController < ApplicationController
 
   def create
     if params[:book_id]
-      book_comment_create
+      create_book_comment
     elsif params[:report_id]
-      report_comment_create
+      create_report_comment
     end
   end
 
-  def edit
-    @article = @comment.commentable
-  end
+  def edit; end
 
   def update
     @comment.update(comment_params)
@@ -24,11 +22,11 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     if params[:book_id]
-      @book = Book.find(params[:book_id])
-      redirect_to book_path(@book)
+      book = Book.find(params[:book_id])
+      redirect_to book_path(book)
     elsif params[:report_id]
-      @report = Report.find(params[:report_id])
-      redirect_to report_path(@report)
+      report = Report.find(params[:report_id])
+      redirect_to report_path(report)
     end
   end
 
@@ -46,12 +44,12 @@ class CommentsController < ApplicationController
     redirect_to polymorphic_path(@comment.commentable) unless @comment.user == current_user
   end
 
-  def book_comment_create
+  def create_book_comment
     @book = Book.find(params[:book_id])
     @comment = @book.comments.build(comment_params)
     @comment.user = current_user
     @comments = @book.comments.order(:id)
-    @article = @comment.commentable
+
     if @comment.save
       redirect_to book_path(@book), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
@@ -59,12 +57,12 @@ class CommentsController < ApplicationController
     end
   end
 
-  def report_comment_create
+  def create_report_comment
     @report = Report.find(params[:report_id])
     @comment = @report.comments.build(comment_params)
     @comment.user = current_user
     @comments = @report.comments.order(:id)
-    @article = @comment.commentable
+
     if @comment.save
       redirect_to report_path(@report), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else

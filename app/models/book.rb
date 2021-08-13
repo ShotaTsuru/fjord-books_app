@@ -5,9 +5,5 @@ class Book < ApplicationRecord
 
   has_many :comments, as: :commentable, dependent: :destroy
 
-  with_options presence: true do
-    validates :title
-    validates :memo
-    validates :author
-  end
+  validates :title, :memo, :author, presence: true
 end

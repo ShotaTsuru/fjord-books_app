@@ -1,5 +1,5 @@
 <h2><%= t("views.common.title_edit", name: Comment.model_name.human) %></h2>
-<%= form_with model: @comment, url: polymorphic_url([@article, @comment]), method: :patch, local: true do |f| %>
+<%= form_with model: @comment, url: polymorphic_url([@comment.commentable, @comment]), method: :patch, local: true do |f| %>
   <%= f.text_area :text %>
   <div class="actions">
     <%= f.submit t("helpers.submit.update") %>

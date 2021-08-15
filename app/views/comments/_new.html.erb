@@ -1,11 +1,11 @@
 <h2><%= Comment.model_name.human %></h2>
-<%= form_with model: [@comment.commentable, @comment], local: true do |f| %>
-  <% if @comment.errors.any? %>
+<%= form_with model: [comment.commentable, comment], local: true do |f| %>
+  <% if comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this commnet from being saved:</h2>
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this commnet from being saved:</h2>
 
       <ul>
-        <% @comment.errors.full_messages.each do |message| %>
+        <% comment.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -19,27 +19,27 @@
 <% end %>
 
 <div class="comment_box">
-  <% if @comments.present? %>
-    <% @comments.each do |comment| %>
+  <% if comment.commentable.comments.order(:id).present? %>
+    <% comment.commentable.comments.order(:id).each do |c| %>
       <div class="comment_content">
         <div class="comment_status_header">
           <div class="comment_header">
             <div class="comment_author">
-              <%= comment.user.name %>
+              <%= c.user.name %>
             </div>
             <div class="comment_date_time">
-              <%= comment.created_at %>
+              <%= c.created_at %>
             </div>
           </div>
-          <% if comment.user == current_user %>
+          <% if c.user == current_user %>
             <div class="comment_status_box">
-              <%= link_to t('views.common.edit'), polymorphic_url([:edit, @comment.commentable, comment]) %>
-              <%= link_to t('views.common.destroy'), polymorphic_url([@comment.commentable, comment]), method: :delete %>
+              <%= link_to t('views.common.edit'), [:edit, comment.commentable, c] %>
+              <%= link_to t('views.common.destroy'), [comment.commentable, c], method: :delete %>
             </div>
           <% end %>
         </div>
         <div class="comment">
-          <%= comment.text %>
+          <%= c.text %>
         </div>
       </div>
     <% end %>

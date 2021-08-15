@@ -12,7 +12,6 @@ class ReportsController < ApplicationController
   # GET /reports/1
   def show
     @comment = @report.comments.new
-    @comments = @report.comments.order(:id)
   end
 
   # GET /reports/new

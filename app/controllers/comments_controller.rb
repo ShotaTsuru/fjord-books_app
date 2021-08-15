@@ -48,8 +48,6 @@ class CommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     @comment = @book.comments.build(comment_params)
     @comment.user = current_user
-    @comments = @book.comments.order(:id)
-
     if @comment.save
       redirect_to book_path(@book), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
@@ -61,8 +59,6 @@ class CommentsController < ApplicationController
     @report = Report.find(params[:report_id])
     @comment = @report.comments.build(comment_params)
     @comment.user = current_user
-    @comments = @report.comments.order(:id)
-
     if @comment.save
       redirect_to report_path(@report), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else

@@ -11,7 +11,6 @@ class BooksController < ApplicationController
   # GET /books/1
   def show
     @comment = @book.comments.new
-    @comments = @book.comments.order(:id)
   end
 
   # GET /books/new

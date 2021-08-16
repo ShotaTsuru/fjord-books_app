@@ -14,7 +14,7 @@ class UserTest < ActiveSupport::TestCase
   test 'User#following?' do
     user =  FactoryBot.create(:user, email: 'foo@example.com')
     user2 = FactoryBot.create(:user, email: 'boo@example.com')
-    
+
     assert_not user2.following?(user)
     user2.active_relationships.find_or_create_by!(following_id: user.id)
     assert_equal true, user2.following?(user)

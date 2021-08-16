@@ -25,7 +25,7 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in 'report[content]', with: 'test test content'
     click_on '登録する'
 
-    assert_text '日報が作成されました。' ####
+    assert_text '日報が作成されました。'
     click_on '戻る'
     page.has_text? 'test title'
   end
@@ -38,7 +38,7 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in 'report[content]', with: 'update content'
     click_on '更新する'
 
-    assert_text '日報が更新されました'####
+    assert_text '日報が更新されました'
     click_on '戻る'
     page.has_text? 'update title'
   end

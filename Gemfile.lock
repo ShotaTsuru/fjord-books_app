@@ -296,7 +296,6 @@ DEPENDENCIES
   devise
   devise-i18n
   dummy_text_jp
-  factory_bot
   factory_bot_rails
   faker
   i18n_generators

@@ -5,7 +5,9 @@ require 'test_helper'
 class ReportTest < ActiveSupport::TestCase
   test 'Report#editable?' do
     user = User.create(email: 'foo@example.com', name: '', password: '111111', password_confirmation: '111111')
+    user2 =  FactoryBot.build(:user)
     report = user.reports.create(title: 'test', content: 'aaaaaaaa')
+    assert_not report.editable?(user2)
     assert_equal true, report.editable?(user)
   end
 

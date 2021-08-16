@@ -6,7 +6,7 @@ FactoryBot.define do
     postal_code            { '111-1111' }
     address                { 'test' }
     self_introduction      { 'testtest' }
-    email                  { 'test@example.com' }
+    email                  { '1111@example.com' }
     password               { 'aaaaaa1' }
     password_confirmation  { password }
   end

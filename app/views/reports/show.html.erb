@@ -13,7 +13,7 @@
   <%= @report.created_at %>
 </p>
 
-<%= render 'comments/new', comment: @comment %>
+<%= render 'comments/new', comment: @comment, commentable: @comment.commentable %>
 
 <% if @report.user == current_user %>
   <%= link_to t('views.common.edit'), edit_report_path(@report) %> |

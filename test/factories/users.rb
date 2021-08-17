@@ -6,7 +6,7 @@ FactoryBot.define do
     postal_code            { '111-1111' }
     address                { 'test' }
     self_introduction      { 'testtest' }
-    email                  { '1111@example.com' }
+    sequence(:email)       { |n| "person#{n}@example.com" }
     password               { 'aaaaaa1' }
     password_confirmation  { password }
   end

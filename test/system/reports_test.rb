@@ -21,18 +21,18 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_path
     click_on '新規作成'
 
-    fill_in 'report[title]', with: 'test titele'
+    fill_in 'report[title]', with: 'test title'
     fill_in 'report[content]', with: 'test test content'
     click_on '登録する'
 
     assert_text '日報が作成されました。'
     click_on '戻る'
-    page.has_text? 'test title'
+    page.assert_text 'test title'
   end
 
   test 'updating a Report' do
     visit reports_path
-    page.has_text? 'test'
+    page.assert_text 'test'
     click_on '編集'
     fill_in 'report[title]', with: 'update title'
     fill_in 'report[content]', with: 'update content'
@@ -40,16 +40,16 @@ class ReportsTest < ApplicationSystemTestCase
 
     assert_text '日報が更新されました'
     click_on '戻る'
-    page.has_text? 'update title'
+    page.assert_text 'update title'
   end
 
   test 'destroying a Report' do
     visit reports_path
-    page.has_text? 'test'
+    page.assert_text 'test'
     page.accept_confirm do
       click_on '削除'
     end
     assert_text '日報が削除されました。'
-    page.has_no_text? 'test'
+    page.assert_no_text 'test'
   end
 end

@@ -1,0 +1,28 @@
+<% commentable = comment.commentable %>
+<h2><%= Comment.model_name.human %></h2>
+<%= form_with model: [commentable, comment], local: true do |f| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this commnet from being saved:</h2>
+
+      <ul>
+        <% comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_area :text %>
+  <div class="actions">
+    <%= f.submit t("views.common.post_comment") %>
+  </div>
+<% end %>
+
+<div class="comment_box">
+  <% if comments = commentable.comments.order(:id).presence %>
+    <%= render 'comments/comments', comments: comments, commentable: commentable %>
+  <% else %>
+    <div><%= t("views.common.none_post", name: Comment.model_name.human) %></div>
+  <% end %>
+</div>

@@ -1,0 +1,23 @@
+<% comments.each do |comment| %>
+  <div class="comment_content">
+    <div class="comment_status_header">
+      <div class="comment_header">
+        <div class="comment_author">
+          <%= comment.user.name %>
+        </div>
+        <div class="comment_date_time">
+          <%= comment.created_at %>
+        </div>
+      </div>
+      <% if comment.user == current_user %>
+        <div class="comment_status_box">
+          <%= link_to t('views.common.edit'), [:edit, commentable, comment] %>
+          <%= link_to t('views.common.destroy'), [commentable, comment], method: :delete %>
+        </div>
+      <% end %>
+    </div>
+    <div class="comment">
+      <%= comment.text %>
+    </div>
+  </div>
+<% end %>
